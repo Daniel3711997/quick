@@ -1,0 +1,122 @@
+{
+    "root": true,
+    "env": {
+        "es2020": true,
+        "browser": true
+    },
+    "globals": {
+        "quickServer": "readonly",
+        "quickRuntime": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:react-hooks/recommended",
+        "plugin:import/recommended",
+        "plugin:import/typescript",
+        "standard",
+        "prettier",
+        "plugin:jsx-a11y/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@tanstack/eslint-plugin-query/recommended"
+    ],
+    "parserOptions": {
+        "parserOptions": {
+            "ecmaFeatures": {
+                "jsx": true
+            },
+            "sourceType": "module",
+            "ecmaVersion": "latest"
+        }
+    },
+    "plugins": ["react-refresh"],
+    "rules": {
+        "no-unused-vars": "off",
+        "no-use-before-define": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "yoda": ["error", "always", { "onlyEquality": true }],
+        "react-refresh/only-export-components": ["warn", { "allowConstantExport": true }],
+        "import/order": [
+            "error",
+            {
+                "distinctGroup": true,
+                "newlines-between": "always",
+                "warnOnUnassignedImports": true,
+                "pathGroupsExcludedImportTypes": [],
+                "pathGroups": [
+                    {
+                        "group": "unknown",
+                        "position": "after",
+                        "pattern": "assets/**"
+                    },
+                    {
+                        "group": "unknown",
+                        "position": "after",
+                        "pattern": "components/**"
+                    },
+                    {
+                        "group": "unknown",
+                        "position": "after",
+                        "pattern": "framework/**"
+                    },
+                    {
+                        "group": "unknown",
+                        "position": "after",
+                        "pattern": "helpers/**"
+                    },
+                    {
+                        "group": "unknown",
+                        "position": "after",
+                        "pattern": "routes/**"
+                    },
+                    {
+                        "group": "unknown",
+                        "position": "after",
+                        "pattern": "styles/**"
+                    }
+                ],
+                "alphabetize": { "order": "asc", "orderImportKind": "asc", "caseInsensitive": true },
+                "groups": ["builtin", "external", "internal", "unknown", "parent", "sibling", "index", "object", "type"]
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": ["**/*.js", "**/*.jsx"],
+            "rules": {
+                "no-use-before-define": "error"
+            }
+        },
+        {
+            "plugins": ["sort-exports"],
+            "files": ["**/index.js", "**/index.ts"],
+            "rules": {
+                "sort-exports/sort-exports": [
+                    "error",
+                    {
+                        "sortDir": "asc",
+                        "ignoreCase": true,
+                        "disableAutofixer": false,
+                        "sortExportKindFirst": "value"
+                    }
+                ]
+            }
+        }
+    ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        },
+        "import/resolver": {
+            "typescript": {
+                "alwaysTryTypes": true,
+                "project": "./tsconfig.json"
+            }
+        },
+        "import/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"]
+        }
+    }
+}

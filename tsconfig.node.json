@@ -1,0 +1,11 @@
+{
+    "include": ["package.json", "vite.config.ts", "src/routes.json", "src/quick.d.ts"],
+
+    "compilerOptions": {
+        "composite": true,
+        "module": "ESNext",
+        "skipLibCheck": true,
+        "moduleResolution": "bundler",
+        "allowSyntheticDefaultImports": true
+    }
+}

@@ -1,0 +1,67 @@
+{
+    "name": "@daniel3711997/quick",
+    "description": "Integrates React JS with WordPress",
+    "private": true,
+    "type": "module",
+    "version": "1.0.0",
+    "engines": {
+        "npm": ">=9.0.0",
+        "node": ">=18.0.0"
+    },
+    "author": {
+        "name": "Daniel3711997",
+        "url": "https://github.com/Daniel3711997",
+        "email": "onofreicostineldanut12@gmail.com"
+    },
+    "scripts": {
+        "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        "predev": "composer dump-autoload",
+        "dev": "check-engine && concurrently -r -k \"typed-scss-modules \\\"**/*.module.scss\\\" -L silent -n camel -e named -w -o .generated\" \"vite\"",
+        "build": "tsc && vite build",
+        "prebuild": "check-engine && npm run lint",
+        "postbuild": "composer dump-autoload --optimize && node scripts/_postbuild.cjs"
+    },
+    "dependencies": {
+        "@tanstack/react-query": "^4.29.19",
+        "@tanstack/react-query-devtools": "^4.29.19",
+        "clsx": "^2.0.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-error-boundary": "^4.0.10"
+    },
+    "devDependencies": {
+        "@tanstack/eslint-plugin-query": "^4.29.9",
+        "@types/node": "^20.4.2",
+        "@types/react": "^18.2.14",
+        "@types/react-dom": "^18.2.6",
+        "@typescript-eslint/eslint-plugin": "^5.61.0",
+        "@typescript-eslint/parser": "^5.61.0",
+        "@vitejs/plugin-react": "^4.0.1",
+        "chalk": "^4.1.2",
+        "check-engine": "^1.11.0",
+        "concurrently": "^8.2.0",
+        "eslint": "^8.44.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-config-standard": "^17.1.0",
+        "eslint-import-resolver-typescript": "^3.5.5",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-jsx-a11y": "^6.7.1",
+        "eslint-plugin-n": "^16.0.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.1",
+        "eslint-plugin-sort-exports": "^0.8.0",
+        "prettier": "^3.0.0",
+        "sass": "^1.63.6",
+        "stylelint": "^15.10.1",
+        "stylelint-config-clean-order": "^5.0.1",
+        "stylelint-config-sass-guidelines": "^10.0.0",
+        "typed-scss-modules": "^7.1.1",
+        "typescript": "^5.0.2",
+        "vite": "^4.4.0",
+        "vite-tsconfig-paths": "^4.2.0"
+    },
+    "quickApplicationNodeEnvironment": "production",
+    "quickApplicationPublicPath": "/wp-content/plugins/quick/build"
+}

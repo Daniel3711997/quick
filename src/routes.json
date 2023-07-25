@@ -1,0 +1,44 @@
+{
+    "$schema": "../.quick/schema.json",
+
+    "routes": [
+        {
+            "app": "vanilla",
+            "tests": [
+                {
+                    "function": "__return_true"
+                }
+            ],
+            "entry": {
+                "name": "vanilla",
+                "path": "src/routes/Vanilla/index.ts"
+            }
+        },
+
+        {
+            "app": "react",
+            "server": {
+                "key": "profile",
+                "method": "getUserProfileData"
+            },
+            "tests": [
+                {
+                    "function": "is_page_template",
+                    "arguments": ["templates/profile.php"]
+                }
+            ],
+            "entry": {
+                "name": "profile",
+                "path": "src/routes/Profile/index.ts"
+            },
+            "rewrites": [
+                {
+                    "after": "top",
+                    "queryVars": ["profile-id"],
+                    "regex": "^profile/([0-9]+)/?$",
+                    "query": "index.php?pagename=profile&profile-id=$matches[1]"
+                }
+            ]
+        }
+    ]
+}

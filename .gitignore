@@ -1,0 +1,7 @@
+.env
+.DS_Store
+
+/build
+/vendor
+/node_modules
+/src/routes.hash
