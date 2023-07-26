@@ -6,14 +6,15 @@ import type { ComponentType } from 'react';
 
 interface ICreateContainer {
     container: ComponentType;
-    excludeWrapper?: boolean;
     element: string | HTMLElement;
 }
 
 export const createContainer =
-    ({ element, excludeWrapper = false, container: ReactAppContainer }: ICreateContainer) =>
+    ({ element, container: ReactAppContainer }: ICreateContainer) =>
     () => {
-        const rootElement = 'string' === typeof element ? document.getElementById(element) : element;
+        // prettier-ignore
+        const rootElement = 'string' === typeof element
+                        ? document.getElementById(element) : element;
 
         if (!rootElement) {
             throw new Error(
@@ -23,5 +24,5 @@ export const createContainer =
             );
         }
 
-        createRoot(rootElement).render(excludeWrapper ? <ReactAppContainer /> : <App Component={ReactAppContainer} />);
+        createRoot(rootElement).render(<App Component={ReactAppContainer} />);
     };

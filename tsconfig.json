@@ -3,6 +3,7 @@
         /* Custom */
         "baseUrl": "./src",
         "rootDirs": [".", ".generated"],
+        "noUncheckedIndexedAccess": true,
 
         /* Default */
         "module": "ESNext",
@@ -26,6 +27,6 @@
         "allowImportingTsExtensions": true
     },
 
-    "include": ["src"],
+    "include": ["src", "__tests__/js"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

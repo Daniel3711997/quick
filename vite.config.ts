@@ -3,6 +3,8 @@ import path from 'node:path';
 
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+import eslint from 'vite-plugin-eslint';
+import stylelint from 'vite-plugin-stylelint';
 import tsconfigPaths from 'vite-tsconfig-paths';
 
 import pckg from './package.json';
@@ -22,7 +24,20 @@ appPackage.quickApplicationPublicPath = '/wp-content/plugins/quick/build';
 fs.writeFileSync(path.join(__dirname, 'package.json'), JSON.stringify(appPackage, null, 4));
 
 export default defineConfig({
-    plugins: [react(), tsconfigPaths()],
+    plugins: [
+        react(),
+        tsconfigPaths(),
+        ...(isDevelopment
+            ? []
+            : [
+                  eslint({
+                      failOnWarning: true,
+                  }),
+                  stylelint({
+                      emitWarningAsError: true,
+                  }),
+              ]),
+    ],
     base: appPackage.quickApplicationPublicPath,
     server: {
         port: 4000,
