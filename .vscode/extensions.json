@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        "xdebug.php-debug",
+        "mrmlnc.vscode-apache",
+        "usernamehw.errorlens",
+        "Gruntfuggly.todo-tree",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "valeryanm.vscode-phpsab",
+        "yoavbls.pretty-ts-errors",
+        "stylelint.vscode-stylelint",
+        "shardulm94.trailing-spaces",
+        "vincaslt.highlight-matching-tag",
+        "christian-kohler.path-intellisense",
+        "bmewburn.vscode-intelephense-client",
+        "meganrogge.template-string-converter",
+        "streetsidesoftware.code-spell-checker"
+    ]
+}

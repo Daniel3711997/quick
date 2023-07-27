@@ -1,0 +1,57 @@
+name: 🚀 Deploy the application to the remote server
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    deploy:
+        name: 🎉 Deploy the Application
+        runs-on: ubuntu-latest
+        steps:
+            - name: 🚚 Get latest code from the application repository
+              uses: actions/checkout@v3
+
+            - name: 👷 Setup PHP & Composer
+              uses: shivammathur/setup-php@v2
+              with:
+                  tools: composer
+                  php-version: 7.4
+
+            - name: 🤖 Install composer dependencies
+              run: composer install --no-interaction
+
+            - name: 👷 Setup the Node.JS runtime
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18
+
+            - name: 🤖 Install the Node.JS dependencies
+              run: npm ci
+
+            - name: 🛠️ Build the Application
+              run: npm run build
+
+            - name: 📂 Deploy the application to the remote server
+              uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  port: ${{ secrets.PORT }}
+                  protocol: ${{ secrets.PROTOCOL }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  server-dir: ${{ secrets.SERVER_DIR }}
+
+    notificaton:
+        name: 🔔 Notify the Administrator
+        if: !cancelled()
+        needs: [deploy]
+        runs-on: ubuntu-latest
+        steps:
+            - name: Send a notificaton to the project administrator
+              uses: appleboy/telegram-action@master
+              with:
+                  to: ${{ secrets.TELEGRAM_TO }}
+                  token: ${{ secrets.TELEGRAM_TOKEN }}
+                  message: 'The project ${{ secrets.PROJECT_NAME }} build status is -> ${{ needs.deploy.result }}'
