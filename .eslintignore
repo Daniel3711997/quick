@@ -1,5 +1,6 @@
 /app
 /build
 /vendor
+/scripts
 /node_modules
 /commitlint.config.cjs

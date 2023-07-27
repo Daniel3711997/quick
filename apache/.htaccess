@@ -1,20 +1,16 @@
-const fs = require('node:fs');
-const chalk = require('chalk');
-const path = require('node:path');
-
-fs.writeFileSync(
-    path.join(__dirname, '..', 'build', '.htaccess'),
-    `
 Options -Indexes
 
-<IfModule mod_authz_host.c>
-    Require all granted
-</IfModule>
+# BEGIN WordPress
 
-<IfModule !mod_authz_host.c>
-    Order Allow,Deny
-    Allow from all
-</IfModule>
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+
+# END WordPress
 
 SetOutputFilter DEFLATE
 SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip
@@ -51,8 +47,3 @@ SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
 </IfModule>
-`,
-);
-
-console.log();
-console.log(chalk.magenta('Project built successfully!'));
