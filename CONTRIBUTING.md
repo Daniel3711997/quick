@@ -14,8 +14,6 @@ Finally, if you're using a script for managing versions like `nvm`, `n`, `rbenv`
 
 For example, for `nvm` that would be:
 
-::: code-group
-
 ```shell [~/.huskyrc]
 # This loads nvm.sh, sets the correct PATH before running hook, and ensures the project version of Node
 export NVM_DIR="$HOME/.nvm"
