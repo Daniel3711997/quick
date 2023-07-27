@@ -1,6 +1,20 @@
 {
     "version": "0.2",
     "language": "en-US",
-    "ignorePaths": ["**/vendor/**", "**/node_modules/**"],
-    "words": ["ABSPATH", "bladeone", "clsx", "eftec", "nopriv", "Phpfastcache", "shortcode", "tanstack", "pagename"]
+    "ignorePaths": [
+        "**/vendor/**",
+        "**/node_modules/**"
+    ],
+    "words": [
+        "ABSPATH",
+        "bladeone",
+        "clsx",
+        "eftec",
+        "lukemorales",
+        "nopriv",
+        "pagename",
+        "Phpfastcache",
+        "shortcode",
+        "tanstack"
+    ]
 }
