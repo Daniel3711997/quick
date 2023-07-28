@@ -1,0 +1,17 @@
+name: 🚀 Deploy the application to the remote server
+
+on:
+    push:
+        branches:
+            - main
+
+        paths:
+            - '.github/**'
+            - 'scripts/**'
+
+jobs:
+    deploy:
+        name: 🎉 Deploy the App
+        runs-on: ubuntu-latest
+        steps:
+            - run: 'echo "No build required for this job"'

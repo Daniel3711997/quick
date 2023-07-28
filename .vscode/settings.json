@@ -53,7 +53,7 @@
     },
 
     // Code Spell Checker
-    "cSpell.files": ["{app,src}/**/*.{php,js,jsx,ts,tsx,css,scss}"],
+    "cSpell.files": ["vite.config.ts", "index.php", "{app,src,__tests__}/**/*.{php,js,jsx,ts,tsx,css,scss}"],
 
     // PHP Intelephense
     "intelephense.format.enable": true,

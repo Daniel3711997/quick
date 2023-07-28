@@ -19,23 +19,29 @@
         "dev": "check-engine && concurrently -r -k \"typed-scss-modules \\\"**/*.module.scss\\\" -L silent -n camel -e named -w -o .generated\" \"vite\"",
         "build": "tsc && vite build",
         "postbuild": "composer dump-autoload --optimize && node scripts/_postbuild.cjs",
-        "prebuild": "check-engine && vitest run __tests__/js && php ./vendor/bin/phpunit __tests__/php --testdox && ./vendor/bin/phpcs index.php app __tests__/php --standard=.php-style.xml && cspell --no-progress \"{app,src,__tests__}/**/*.{php,js,jsx,ts,tsx,css,scss,json}\""
+        "prebuild": "check-engine && npm run eslint && npm run stylelint && npm run cspell && npm run php-check && npm run php-test && npm run js-test",
+        "js-test": "vitest run __tests__/js",
+        "php-test": "php ./vendor/bin/phpunit __tests__/php --testdox",
+        "php-check": "./vendor/bin/phpcs index.php app __tests__/php --standard=.php-style.xml --cache",
+        "eslint": "eslint --cache --cache-strategy metadata --cache-location \"cache/eslint/\" \"{src, __tests__}/**/*.{js,jsx,ts,tsx}\" --max-warnings 0 --report-unused-disable-directives",
+        "stylelint": "stylelint --cache --cache-strategy metadata --cache-location \"cache/stylelint/\" \"src/**/*.{css,scss}\" --max-warnings 0 --report-needless-disables",
+        "cspell": "cspell --no-progress index.php \"{app,src,__tests__}/**/*.{php,js,jsx,ts,tsx,css,scss}\" --cache --cache-strategy metadata --cache-location \"cache/tools/cspell\""
     },
     "lint-staged": {
+        "**/*.php": [
+            "./vendor/bin/phpcs --standard=.php-style.xml --cache"
+        ],
         "**/*.{js,jsx,ts,tsx}": [
-            "eslint"
+            "eslint --cache --cache-strategy metadata --cache-location \"cache/eslint/\""
         ],
         "**/*.{css,scss}": [
-            "stylelint"
+            "stylelint --cache --cache-strategy metadata --cache-location \"cache/stylelint/\""
         ],
         "**/*.{js,jsx,ts,tsx,json,css,scss}": [
-            "prettier --write"
+            "prettier --write --cache --cache-strategy metadata --cache-location \"cache/tools/prettier\""
         ],
         "**/*.{php,js,jsx,ts,tsx,css,scss}": [
-            "cspell --no-progress"
-        ],
-        "**/*.php": [
-            "./vendor/bin/phpcs --standard=.php-style.xml"
+            "cspell --no-progress --cache --cache-strategy metadata --cache-location \"cache/tools/cspell\""
         ]
     },
     "dependencies": {
@@ -94,8 +100,6 @@
         "typed-scss-modules": "^7.1.2",
         "typescript": "^5.1.6",
         "vite": "^4.4.7",
-        "vite-plugin-eslint": "^1.8.1",
-        "vite-plugin-stylelint": "^4.3.0",
         "vite-tsconfig-paths": "^4.2.0",
         "vitest": "^0.33.0"
     },

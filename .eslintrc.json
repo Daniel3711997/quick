@@ -24,13 +24,13 @@
         "plugin:@typescript-eslint/recommended-type-checked"
     ],
     "parserOptions": {
-        "project": true,
         "ecmaFeatures": {
             "jsx": true
         },
         "sourceType": "module",
         "ecmaVersion": "latest",
-        "tsconfigRootDir": "./"
+        "tsconfigRootDir": "./",
+        "project": ["./tsconfig.json", "./tsconfig.node.json"]
     },
     "plugins": ["react-refresh"],
     "rules": {

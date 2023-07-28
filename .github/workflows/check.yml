@@ -1,7 +1,7 @@
-name: 🚀 Deploy the application to the remote server
+name: 🚀 Check the application
 
 on:
-    push:
+    pull_request:
         branches:
             - main
 
@@ -10,8 +10,8 @@ on:
             - 'scripts/**'
 
 jobs:
-    deploy:
-        name: 🎉 Deploy the Application
+    check:
+        name: 🎉 Check the App
         runs-on: ubuntu-latest
         steps:
             - name: 🚚 Get latest code from the application repository
@@ -56,20 +56,10 @@ jobs:
                   restore-keys: ${{ runner.os }}-application
                   key: ${{ runner.os }}-application-${{ hashFiles('**/package-lock.json') }}
 
-            - name: 📂 Deploy the application to the remote server
-              uses: SamKirkland/FTP-Deploy-Action@v4.3.4
-              with:
-                  server: ${{ secrets.FTP_SERVER }}
-                  port: ${{ secrets.PORT }}
-                  protocol: ${{ secrets.PROTOCOL }}
-                  username: ${{ secrets.FTP_USERNAME }}
-                  password: ${{ secrets.FTP_PASSWORD }}
-                  server-dir: ${{ secrets.SERVER_DIR }}
-
     notificaton:
         name: 🔔 Notify the Administrator
         if: !cancelled()
-        needs: [deploy]
+        needs: [check]
         runs-on: ubuntu-latest
         steps:
             - name: Send a notificaton to the project administrator
@@ -77,4 +67,4 @@ jobs:
               with:
                   to: ${{ secrets.TELEGRAM_TO }}
                   token: ${{ secrets.TELEGRAM_TOKEN }}
-                  message: 'The project ${{ secrets.PROJECT_NAME }} build status is -> ${{ needs.deploy.result }}'
+                  message: 'The project ${{ secrets.PROJECT_NAME }} check status is -> ${{ needs.check.result }}'

@@ -1,0 +1,17 @@
+name: 🚀 Check the application
+
+on:
+    pull_request:
+        branches:
+            - main
+
+        paths:
+            - '.github/**'
+            - 'scripts/**'
+
+jobs:
+    check:
+        name: 🎉 Check the App
+        runs-on: ubuntu-latest
+        steps:
+            - run: 'echo "No check required for this job"'
