@@ -32,10 +32,10 @@
             "./vendor/bin/phpcs --standard=.php-style.xml --cache"
         ],
         "**/*.{js,jsx,ts,tsx}": [
-            "eslint --cache --cache-strategy metadata --cache-location \"cache/eslint/\""
+            "eslint --cache --cache-strategy metadata --cache-location \"cache/eslint/\" --max-warnings 0 --report-unused-disable-directives"
         ],
         "**/*.{css,scss}": [
-            "stylelint --cache --cache-strategy metadata --cache-location \"cache/stylelint/\""
+            "stylelint --cache --cache-strategy metadata --cache-location \"cache/stylelint/\" --max-warnings 0 --report-needless-disables"
         ],
         "**/*.{js,jsx,ts,tsx,json,css,scss}": [
             "prettier --write --cache --cache-strategy metadata --cache-location \"cache/tools/prettier\""
