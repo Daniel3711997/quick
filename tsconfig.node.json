@@ -1,5 +1,5 @@
 {
-    "include": ["package.json", "vite.config.ts", "src/routes.json", "src/quick.d.ts"],
+    "include": ["package.json", "vite.config.ts", "vitest.config.js", "src/routes.json", "src/quick.d.ts"],
 
     "compilerOptions": {
         "composite": true,
