@@ -29,13 +29,10 @@
     "require": {
         "php": ">=7.4",
         "ext-json": "*",
-        "psr/cache": "^1.0",
-        "doctrine/lexer": "^2.0",
         "eftec/bladeone": "^4.8",
         "vlucas/phpdotenv": "^5.5",
         "guzzlehttp/guzzle": "^7.0",
         "doctrine/annotations": "^2.0",
-        "phpfastcache/phpfastcache": "^8.1",
-        "symfony/deprecation-contracts": "^2.2"
+        "phpfastcache/phpfastcache": "^8.1"
     }
 }
