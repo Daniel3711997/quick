@@ -1,8 +1,8 @@
+import type { ComponentType } from 'react';
+
 import { createRoot } from 'react-dom/client';
 
-import { App } from 'routes/_app';
-
-import type { ComponentType } from 'react';
+import { App } from '@app/routes/_app';
 
 interface ICreateContainer {
     container: ComponentType;

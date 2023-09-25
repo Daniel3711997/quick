@@ -1,7 +1,4 @@
 {
-    "version": "0.2",
-    "language": "en-US",
-    "ignorePaths": ["**/vendor/**", "**/node_modules/**"],
     "words": [
         "ABSPATH",
         "atts",
@@ -16,5 +13,8 @@
         "shortcode",
         "tanstack",
         "vite"
-    ]
+    ],
+    "version": "0.2",
+    "language": "en-US",
+    "ignorePaths": ["vendor/**", "node_modules/**"]
 }

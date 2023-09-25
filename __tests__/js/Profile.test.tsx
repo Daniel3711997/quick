@@ -1,8 +1,8 @@
 import { render } from '@testing-library/react';
 import { it, expect } from 'vitest';
 
-import { App } from 'routes/_app';
-import { Profile } from 'routes/Profile/Profile';
+import { App } from '@app/routes/_app';
+import { Profile } from '@app/routes/Profile/Profile';
 
 it('renders correctly', () => {
     // prettier-ignore

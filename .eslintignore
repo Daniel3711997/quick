@@ -1,7 +1,4 @@
 /app
 /build
 /vendor
-/scripts
 /node_modules
-/postcss.config.cjs
-/commitlint.config.cjs

@@ -1,10 +1,10 @@
-import viteLogo from 'assets/vite-logo.png';
+import viteLogo from '@app/assets/vite-logo.png';
 
-import { homeContainer } from './Home.module.scss';
+import HomeStyles from './Home.module.scss';
 
 export const Home = () => {
     return (
-        <div className={homeContainer}>
+        <div className={HomeStyles['home-container']}>
             <h1>Hello World (Home)</h1>
 
             <img src={viteLogo} alt="Vite Logo" width="100" height="100" />

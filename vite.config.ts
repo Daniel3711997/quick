@@ -54,7 +54,7 @@ export default defineConfig({
     },
     css: {
         modules: {
-            localsConvention: 'camelCaseOnly',
+            // localsConvention: 'camelCaseOnly',
             generateScopedName: isProduction ? '[hash:base64:12]' : '[name]__[local]--[hash:base64:12]',
         },
     },

@@ -1,4 +1,4 @@
-import { createContainer } from 'framework/quick';
+import { createContainer } from '@app/framework/quick';
 
 import { Home } from './Home';
 

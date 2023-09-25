@@ -1,8 +1,9 @@
 {
     "compilerOptions": {
         /* Custom */
-        "baseUrl": "./src",
-        "rootDirs": [".", ".generated"],
+        "paths": {
+            "@app/*": ["./src/*"]
+        },
         "noUncheckedIndexedAccess": true,
 
         /* Default */

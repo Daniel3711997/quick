@@ -1,9 +1,9 @@
 /* eslint-disable import/no-unresolved */
 
-import { Dispose } from 'helpers/dispose';
-import { loadSuspense } from 'helpers/suspense';
+import { Dispose } from '@app/helpers/dispose';
+import { loadSuspense } from '@app/helpers/suspense';
 
-import 'styles/main.scss';
+import '@app/styles/main.scss';
 
 if ('development' !== import.meta.env.MODE) {
     // @ts-expect-error - No types

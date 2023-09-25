@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { type ComponentType, StrictMode } from 'react';
 
-import { RequestBoundary } from 'components/RequestBoundary';
+import { RequestBoundary } from '@app/components/RequestBoundary';
 
 interface IAppProps {
     Component: ComponentType;

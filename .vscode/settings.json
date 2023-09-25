@@ -3,6 +3,12 @@
     "stylelint.snippet": ["css", "scss"],
     "stylelint.validate": ["css", "scss"],
 
+    // Path Intellisense
+    "path-intellisense.mappings": {
+        "@app": "${workspaceFolder}/src",
+        "@generated": "${workspaceFolder}/__generated__"
+    },
+
     // General
     "editor.formatOnSave": true,
     "editor.wordWrap": "bounded",
